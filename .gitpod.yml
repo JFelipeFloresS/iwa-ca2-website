@@ -1,0 +1,4 @@
+tasks:
+  - name: node
+    init: npm install
+    command: node index.js
