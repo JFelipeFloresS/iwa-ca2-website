@@ -13,11 +13,13 @@ function draw_table() {
 
 
                 let html = "<!-- Table start --><table id='albums-table' class='table table-striped'>";
-                html += "<!-- Table headers --><thead><th>Position</th><th>Title</th><th>Year</th><th>Artist</th><th></th></thead>";
+                html += "<!-- Table headers --><thead><th>Position</th><th>Title</th><th>Year</th><th>Artist</th><th> </th></thead>";
                 html += " <!-- Table body --><tbody id='tableBody'>";
+                // create table rows for each album in the JSON file
                albums.forEach(album => {
-                   html += " <!-- New table row for each album in the JSON file --><tr class='album-row' id='album-row' draggable='false'>";
-                   html += " <!-- Information to be displayed --><td class='number' id='number'>";
+                   html += "<tr class='album-row' id='album-row' draggable='false'>";
+                   // information to be displayed
+                   html += " <td class='number' id='number'>";
                    html += album.number;
                    html += "</td><td class='title' contentEditable='false'>";
                    html += album.title;
@@ -25,9 +27,12 @@ function draw_table() {
                    html += album.year;
                    html += "</td ><td class='artist' contentEditable='false'>";
                    html += album.artist;
-                   html += "</td><!--Delete element button-- ><td class='btn-td'><button class='btn btn-danger' id='delete-button' disabled='true'>delete</button></td></tr > ";
+                   html += "</td>"
+                   // delete element button
+                   html += "<td class='btn-td'><button class='btn btn-danger' id='delete-button' disabled='true'>delete</button></td>";
+                   html += "</tr> ";
                 });
-                html += "</tbody></table>";
+                html += '</tbody></table><!-- JS Files --><script src="./js/albums.js">a</script><script src="./js/append.js">a</script><script src="./js/delete.js">a</script><script src="./js/drag-drop.js">a</script><script src="./js/year-selection.js">a</script><script src="./js/edit-validator.js">a</script>';
                 $('#results').append(html);
 
             }
