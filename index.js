@@ -6,9 +6,9 @@ const express = require('express'),
 const router = express(),
     server = http.createServer(router);
 
+router.use(bodyParser.json());
 router.use(express.static(path.resolve(__dirname, "views")));
 router.use(require('./routes'));
-router.use(bodyParser.json());
 
 server.listen(
     process.env.PORT || 3000,
