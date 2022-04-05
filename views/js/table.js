@@ -11,10 +11,12 @@ function draw_table() {
 
                 console.log(albums);
 
-
-                let html = "<!-- Table start --><table id='albums-table' class='table table-striped'>";
-                html += "<!-- Table headers --><thead><th>Position</th><th>Title</th><th>Year</th><th>Artist</th><th> </th></thead>";
-                html += " <!-- Table body --><tbody id='tableBody'>";
+                // start table
+                let html = "<table id='albums-table' class='table table-striped'>";
+                // table headers
+                html += "<thead><th>Position</th><th>Title</th><th>Year</th><th>Artist</th><th> </th></thead>";
+                // table body
+                html += " <tbody id='tableBody'>";
                 // create table rows for each album in the JSON file
                albums.forEach(album => {
                    html += "<tr class='album-row' id='album-row' draggable='false'>";
@@ -32,7 +34,9 @@ function draw_table() {
                    html += "<td class='btn-td'><button class='btn btn-danger' id='delete-button' disabled='true'>delete</button></td>";
                    html += "</tr> ";
                 });
-                html += '</tbody></table><!-- JS Files --><script src="./js/albums.js">a</script><script src="./js/append.js">a</script><script src="./js/delete.js">a</script><script src="./js/drag-drop.js">a</script><script src="./js/year-selection.js">a</script><script src="./js/edit-validator.js">a</script>';
+                html += '</tbody></table>';
+                // js scripts
+                html += '<script src="./js/albums.js">a</script><script src="./js/append.js">a</script><script src="./js/delete.js">a</script><script src="./js/drag-drop.js">a</script><script src="./js/year-selection.js">a</script><script src="./js/edit-validator.js">a</script>';
                 $('#results').append(html);
 
             }
