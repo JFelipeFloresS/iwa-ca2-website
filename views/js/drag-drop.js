@@ -167,6 +167,7 @@ function addEventListeners(item) {
     item.addEventListener('dragend', handleDragEnd);
     item.addEventListener('drop', handleDrop);
     item.querySelector('#delete-button').addEventListener('click', (e) => { deleteElement(e); });
+    item.querySelector('#update-button').addEventListener('click', (e) => { updateElement(e); });
 };
 
 

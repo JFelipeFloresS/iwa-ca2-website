@@ -35,10 +35,10 @@ function getJSONFromList() {
         for (i = 0; i < allAlbums.length; i++) {
             row = allAlbums[i];
             json += '{' +
-                '"Number":' + row.querySelector('#number').innerHTML + ',' +
-                '"Year": ' + row.querySelector('.year').innerHTML + ',' +
-                '"Title": "' + escapeStringJSON(row.querySelector('.title').innerHTML) + '",' +
-                '"Artist": "' + escapeStringJSON(row.querySelector('.artist').innerHTML) + '"' +
+                '"number":' + row.querySelector('#number').innerHTML + ',' +
+                '"year": ' + row.querySelector('.year').innerHTML + ',' +
+                '"title": "' + escapeStringJSON(row.querySelector('.title').innerHTML) + '",' +
+                '"artist": "' + escapeStringJSON(row.querySelector('.artist').innerHTML) + '"' +
                 '}';
             if (i < allAlbums.length - 1) {
                 json += ',';
@@ -127,6 +127,53 @@ function callPostUpdate() {
     }
 };
 
+function callSingleUpdate(elPos, json) {
+    try {
+        $.ajax({
+            type: 'PUT',
+            url: 'put/update/' + elPos,
+            dataType: 'json',
+            contentType: 'application/json',
+            data: json,
+            async: false
+        });
+        
+        notification({
+            title: 'Saved!',
+            message: 'Changes have been successfully saved.',
+        });
+    } catch (err) {
+        badNotification({
+            title: 'Error',
+            message: err
+        });
+    }
+}
+
+function getSingleJSONFromElement(elPos) {
+    let json = null;
+    try {
+        for (i = 0; i < allAlbums.length; i++) {
+            row = allAlbums[i];
+            if (row.querySelector('#number').innerHTML == elPos) {
+                json = '{' +
+                '"year": ' + row.querySelector('.year').innerHTML + ',' +
+                '"title": "' + escapeStringJSON(row.querySelector('.title').innerHTML) + '",' +
+                '"artist": "' + escapeStringJSON(row.querySelector('.artist').innerHTML) + '"' +
+                '}';
+            }
+        }
+        json = json.replaceAll('<br>', ' ');
+        return json;
+    } catch (err) {
+        badNotification({
+            title: 'Error',
+            message: err
+        });
+        return null;
+    }
+}
+
 /**
  * Changes the data in the XML in use into the original Rolling Stones list.
  */
@@ -204,8 +251,10 @@ function setEditabilityOfContent(editable) {
         allAlbums.forEach((album) => {
 
             if (editable) {
+                album.querySelector('#update-button').removeAttribute('disabled');
                 album.querySelector('#delete-button').removeAttribute('disabled');
             } else {
+                album.querySelector('#update-button').setAttribute('disabled', true);
                 album.querySelector('#delete-button').setAttribute('disabled', true);
             }
             album.querySelector('.title').setAttribute('contentEditable', editable);

@@ -9,12 +9,10 @@ function draw_table() {
             cache: false,
             success: function (albums) {
 
-                console.log(albums);
-
                 // start table
                 let html = "<table id='albums-table' class='table table-striped'>";
                 // table headers
-                html += "<thead><th>Position</th><th>Title</th><th>Year</th><th>Artist</th><th> </th></thead>";
+                html += "<thead><th>Position</th><th>Title</th><th>Year</th><th>Artist</th><th> </th> <th> </th></thead>";
                 // table body
                 html += " <tbody id='tableBody'>";
                 // create table rows for each album in the JSON file
@@ -31,12 +29,13 @@ function draw_table() {
                    html += album.artist;
                    html += "</td>"
                    // delete element button
+                   html += "<td class='btn-td'><button class='btn btn-success' id='update-button' disabled='true'>update</button></td>";
                    html += "<td class='btn-td'><button class='btn btn-danger' id='delete-button' disabled='true'>delete</button></td>";
                    html += "</tr> ";
                 });
                 html += '</tbody></table>';
                 // js scripts
-                html += '<script src="./js/albums.js">a</script><script src="./js/append.js">a</script><script src="./js/delete.js">a</script><script src="./js/drag-drop.js">a</script><script src="./js/year-selection.js">a</script><script src="./js/edit-validator.js">a</script>';
+                html += '<script src="./js/albums.js">a</script><script src="./js/append.js">a</script><script src="./js/delete.js">a</script><script src="./js/drag-drop.js">a</script><script src="./js/year-selection.js">a</script><script src="./js/edit-validator.js">a</script><script src="./js/update-one.js">a</script>';
                 $('#results').append(html);
 
             }

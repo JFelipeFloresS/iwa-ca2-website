@@ -1,4 +1,4 @@
-const baseAPILink = "https://8000-jfelipefloress-iwaca2-d65r0a2dg4m.ws-eu38.gitpod.io/albums",
+const baseAPILink = "https://8000-jfelipefloress-iwaca2-d65r0a2dg4m.ws-eu38.gitpod.io/albums/",
     request = require('request'),
     axios = require('axios');
 
@@ -17,18 +17,12 @@ exports.getAlbums = function (req, res) {
 };
 
 exports.updateAlbum = function (req, res) {
-    $.ajax({
-        type: "PUT",
-        url: baseAPILink + req.params.number,
-        data: req.params.data,
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        success: function (data) {
-            if (data.status == 'OK') notification({ title: 'Success', message: 'Album has been update' });
-            else badNotification({ title: 'Error', message: 'Failed updating album: ' + data.status + ', ' + data.errorMessage });
-        }
+    axios
+    .put(baseAPILink + req.params.number, req.body)
+    .then((response) => {
+        console.log(response.data);
+      }).catch((err) => {
+        console.error(err);
     });
 };
 

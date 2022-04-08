@@ -3,7 +3,7 @@ const express = require("express"),
     albumCtrl = require('./album-controller');
 
 router.get('/get/table', albumCtrl.getAlbums);
-router.put('/update/:number/:data', albumCtrl.getAlbums);
+router.put('/put/update/:number', albumCtrl.updateAlbum);
 router.post('/post/update', albumCtrl.updateAll);
 
 module.exports = router;
