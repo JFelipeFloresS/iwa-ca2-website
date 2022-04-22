@@ -22,7 +22,6 @@
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"
             integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <script src="./js/notifications.js"></script>
-        <script src="js/table.js"></script>
 
     </head>
 
@@ -31,100 +30,39 @@
         <!-- Responsive navbar-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
-            <div class="row">
 
                 <!-- Logo -->
                 <a class="navbar-brand col-sm" href="/">
-                    <!-- Image retrieved from https://i2.wp.com/www.versatilnews.com.br/wp-content/uploads/2014/08/Rolling-Stone-LOGO-2.jpg?w=1296&ssl=1 -->
-                    <img src="./assets/logo.jpg" alt="Rolling Stone" width="100em" id="logo-img" />
+                    <img src="https://i2.wp.com/www.versatilnews.com.br/wp-content/uploads/2014/08/Rolling-Stone-LOGO-2.jpg?w=1296&ssl=1" alt="Rolling Stone" width="100em" id="logo-img" />
                 </a>
 
-            </div>
+                <a href="./new-account.html" class="navbar-nav ml-auto" style="margin-right: 5%; text-decoration: none;">CREATE ACCOUNT</a>
+
 
         </nav>
 
         <!-- Page content-->
-        <div class="myContainer">
+        <div class="myContainer mx-auto my-5">
 
-            <div class="text-center w-100">
+            <div class="text-center w-50 mx-auto">
 
-                <div class="row w-100 header-top">
+                <div class="row w-100 header-top mx-auto">
 
-                    <!-- Container header -->
-                    <div class='col-sm-9 py-2'>
-                        <h3>BEST ALBUMS OF ALL TIME</h3>
-                        <p class="lead">Update and adjust the top 500 albums of all time!</p>
-                    </div>
+                    <h1>Log in</h1>
 
-                    <!-- Top button div (save changes/enable edit) -->
-                    <div class="col-sm-3 py-2 top-btn-div row">
+                    <hr class="my-5">
 
-                        <button class="btn btn-primary save-changes col-sm mx-2 my-2 w-50" onclick='saveEdit()'>save
-                            changes</button>
-
-                        <button class='btn btn-warning toggle-edit col-sm mx-2 my-2 w-50'
-                            onclick='toggleEnable()'>enable edit</button>
-
-                    </div>
+                    <form action="login">
+                        <input type="email" name="email" id="email" placeholder="email" class="w-50">
+                        <br><br>
+                        <input type="password" name="password" id="password" placeholder="password" class="w-50">
+                        <br><br>
+                        <input type="submit" value="Log in" class="w-25 btn btn-primary">
+                    </form>
 
                 </div>
-
-                <div class='select-div'>
-                    <label for="select-year">Show year:</label> <select class="select-year form-select"
-                        name='select-year' onchange='updateYearDisplayed()'>
-                    </select>
-                </div>
-                <hr>
-                <!-- Information div -->
-                <div class="row">
-
-                    <!-- JSON content -->
-                    <div class="table-container col-sm">
-                        <div id="results"></div>
-                    </div>
-
-                    <!-- Append new album form -->
-                    <div class="col-sm-2">
-
-                        <form enctype="application/json" id='append-form' onsubmit="appendElement" width='100%'
-                            method="dialog">
-                            <h4>Add new album:</h4>
-                            <!-- Position -->
-                            <label for="position">Position:</label>
-                            <input type="number" name="position" min="1" max="500" value="1" class="form-control"
-                                required />
-
-                            <!-- Title -->
-                            <label for="title">Title:</label>
-                            <input type="text" name="title" placeholder="title" class="form-control" required />
-
-                            <!-- Year -->
-                            <label for="year">Year:</label>
-                            <input type="number" name="year" min="1900" max="2022" value="2021" class="form-control"
-                                required />
-
-                            <!-- Artist -->
-                            <label for="artist">Artist:</label>
-                            <input type="text" name="artist" placeholder="artist" class="form-control" required />
-                            <br />
-
-                            <!-- Append button -->
-                            <button type="button" class="btn btn-primary" id="append">
-                                add album
-                            </button>
-
-                        </form>
-
-                    </div>
-
-                </div>
-
+                
             </div>
-
-            <!-- Fall back button -->
-            <button class="btn btn-danger fallback" onclick='fallBackToOriginalList()'>
-                fall back<br>to original list
-            </button>
 
         </div>
 

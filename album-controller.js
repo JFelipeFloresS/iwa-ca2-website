@@ -1,4 +1,4 @@
-const baseAPILink = "https://8000-jfelipefloress-iwaca2-d65r0a2dg4m.ws-eu38.gitpod.io/albums/",
+const baseAPILink = "https://8000-jfelipefloress-iwaca2-d65r0a2dg4m.ws-eu41.gitpod.io/albums",
     request = require('request'),
     axios = require('axios');
 
