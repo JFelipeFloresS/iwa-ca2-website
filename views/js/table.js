@@ -20,7 +20,7 @@ function draw_table() {
                    html += "<tr class='album-row' id='album-row' draggable='false'>";
                    // information to be displayed
                    html += " <td class='number' id='number'>";
-                   html += album.number;
+                   html += album._id;
                    html += "</td><td class='title' contentEditable='false'>";
                    html += album.title;
                    html += "</td><td class='year' contentEditable='false'>";
@@ -42,7 +42,7 @@ function draw_table() {
         });
     };
 
-    $.getJSON('get/table');
+    $.getJSON('/get/table');
 }
 
 /**

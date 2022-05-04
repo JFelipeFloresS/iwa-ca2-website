@@ -1,4 +1,4 @@
-const baseAPILink = "https://8000-jfelipefloress-iwaca2-d65r0a2dg4m.ws-eu41.gitpod.io/albums",
+const baseAPILink = "https://8000-jfelipefloress-iwaca2-d65r0a2dg4m.ws-eu43.gitpod.io/albums",
     request = require('request'),
     axios = require('axios');
 
@@ -9,6 +9,7 @@ exports.getAlbums = function (req, res) {
     request(baseAPILink, function (error, response, body) {
         if (!error && response.statusCode == 200) {
             let info = JSON.parse(body)
+            console.log(info);
             res.send(info);
         } else {
             res.send(error);
